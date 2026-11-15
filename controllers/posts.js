@@ -1,5 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+//load the Comment model 
+const Comment = require('../models/Comment')
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -18,10 +20,11 @@ module.exports = {
       console.log(err);
     }
   },
-  getPost: async (req, res) => {
+  getPost: async (req, res) => { //comments should be added to the Posts
     try {
       const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      const comments = await Comment.find({post: req.params.id}).sort({createdAt: "desc"}).lean()
+      res.render("post.ejs", { post: post, user: req.user, comments: comments });
     } catch (err) {
       console.log(err);
     }
@@ -62,12 +65,13 @@ module.exports = {
   deletePost: async (req, res) => {
     try {
       // Find post by id
-      let post = await Post.findById({ _id: req.params.id });
+      let post = await Post.findById({ _id: req.params.id });//makes sure that this post exists
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.cloudinaryId);
+      await cloudinary.uploader.destroy(post.cloudinaryId); //You destroy the posts from Cloudinary so that they are not always taking up the space in your account  
       // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log("Deleted Post");
+      //once the post is deleted, they are redirected back to the profile 
       res.redirect("/profile");
     } catch (err) {
       res.redirect("/profile");
