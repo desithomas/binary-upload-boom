@@ -1,0 +1,26 @@
+body{
+    background: rgb(92,	140,	206)
+}
+
+.background-video{
+position: fixed; 
+top: 0; 
+left: 0; 
+width: 100%; 
+height: 100%; 
+object-fit: cover; 
+z-index: -2;
+}
+
+.video-overlay{
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(5, 10, 45, 0.45); 
+    z-index: -1;
+}
+.tagline{
+    color: white;
+}
