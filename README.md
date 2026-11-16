@@ -44,10 +44,11 @@ A social media app where people create an account, post photos with a title and 
   - API_SECRET = `your cloudinary api secret`
 
 ```
-4. Start the application
+4. **Start the application:**
    ```bash
    npm start
   
-5. Go to http://localhost:9000 in your browser.
+5. **Local browser view:**
+* Go to http://localhost:9000 in your browser.
 
 Viola! Join in and share your nails!
