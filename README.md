@@ -17,7 +17,7 @@ A social media app where people create an account, post photos with a title and 
 
 ## View on website: 
 
- https://binaryuploadboom-xc8j.onrender.com
+https://binaryuploadboom-xc8j.onrender.com
 
  ## Try it with a demo account: 
 * **Email:** xqdrcxtngqkuefeohw@gonrr.net
